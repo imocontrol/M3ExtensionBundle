@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="imocontrol.extension.generator.bundle" class="IMOControl\M3\ExtensionBundle\Generator\BundleGenerator"/>
+        <service id="imocontrol.extension.generator.orm" class="IMOControl\M3\ExtensionBundle\Generator\OrmGenerator"/>
+        <service id="imocontrol.extension.generator.odm" class="IMOControl\M3\ExtensionBundle\Generator\OdmGenerator"/>
+        <service id="imocontrol.extension.generator.phpcr" class="IMOControl\M3\ExtensionBundle\Generator\PHPCRGenerator"/>
+    </services>
+</container>

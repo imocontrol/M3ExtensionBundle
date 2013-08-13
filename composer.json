@@ -1,0 +1,39 @@
+{
+    "name": "imocontrol/m3-extension-bundle",
+    "type": "symfony-bundle",
+    "description": "iMOControl extension bundle helps to build",
+    "keywords": ["imocontrol", "extension bundle"],
+    "homepage": "http://sonata-project.org/bundles/easy-extends",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas Rabaix",
+            "email": "thomas.rabaix@sonata-project.org",
+            "homepage": "http://sonata-project.org"
+        },
+        {
+            "name": "Michael Ofner",
+            "email": "michael@imocontrol.net",
+            "homepage": "http://imocontrol.net"
+        },
+        {
+            "name": "iMOControl Community",
+            "homepage": "https://github.com/imocontrol/IMOControlM3ExtensionBundle/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": "~2",
+        "symfony/console": "~2",
+        "symfony/finder": "~2"
+    },
+    "autoload": {
+        "psr-0": { "IMOControl\\M3\\ExtensionBundle": "" }
+    },
+    "target-dir": "IMOControl/M3/ExtensionBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
