@@ -52,6 +52,7 @@ After that insert ApplicationIMOControlM3CustomerBundle to your AppKernel.
     }
 
 Last but not least we have to tell iMOControl to use the new application bundle.
+
     # app/config/imocontrol/customer.yml
     imo_control_m3_customer:
         customer_folder_root_dir: "%kernel.root_dir%/data/customers/"
