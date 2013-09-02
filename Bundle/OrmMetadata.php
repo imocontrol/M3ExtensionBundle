@@ -10,7 +10,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonata\EasyExtendsBundle\Bundle;
+namespace IMOControl\M3\ExtensionBundle\Bundle;
 
 use Symfony\Component\Finder\Finder;
 
@@ -90,7 +90,7 @@ class OrmMetadata
         try {
             $f = new Finder;
             $f->name('*Repository.php');
-            $f->in($this->getEntityDirectory());
+            $f->in($this->getEntityDirectory() . 'Repository');
 
             return $f->getIterator();
         } catch (\Exception $e) {

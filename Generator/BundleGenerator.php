@@ -12,7 +12,7 @@
 namespace IMOControl\M3\ExtensionBundle\Generator;
 
 use Symfony\Component\Console\Output\OutputInterface;
-use Sonata\EasyExtendsBundle\Bundle\BundleMetadata;
+use IMOControl\M3\ExtensionBundle\Bundle\BundleMetadata;
 
 class BundleGenerator implements GeneratorInterface
 {
@@ -41,12 +41,13 @@ class BundleGenerator implements GeneratorInterface
     {
         $directories = array(
             '',
-            'Resources/config/doctrine',
+            'Admin',
             'Resources/config/routing',
             'Resources/views',
             'Command',
             'DependencyInjection',
             'Entity',
+            'Entity/Repository',
             'Document',
             'PHPCR',
             'Controller'
@@ -67,7 +68,7 @@ class BundleGenerator implements GeneratorInterface
      */
     protected function generateBundleFile(OutputInterface $output, BundleMetadata $bundleMetadata)
     {
-        $file = sprintf('%s/Application%s.php', $bundleMetadata->getExtendedDirectory(), $bundleMetadata->getName());
+        $file = sprintf('%s/Application%s.php', $bundleMetadata->getExtendedDirectory(), $bundleMetadata->getFullname());
 
         if (is_file($file)) {
             return;
@@ -76,7 +77,7 @@ class BundleGenerator implements GeneratorInterface
         $output->writeln(sprintf('  > generating bundle file <comment>%s</comment>', $file));
 
         $string = Mustache::replace($this->getBundleTemplate(), array(
-            'bundle'    => $bundleMetadata->getName(),
+            'bundle'    => $bundleMetadata->getFullname(),
             'namespace' => $bundleMetadata->getExtendedNamespace(),
         ));
 

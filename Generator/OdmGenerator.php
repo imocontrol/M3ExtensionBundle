@@ -12,7 +12,7 @@
 namespace IMOControl\M3\ExtensionBundle\Generator;
 
 use Symfony\Component\Console\Output\OutputInterface;
-use Sonata\EasyExtendsBundle\Bundle\BundleMetadata;
+use IMOControl\M3\ExtensionBundle\Bundle\BundleMetadata;
 
 class OdmGenerator implements GeneratorInterface
 {

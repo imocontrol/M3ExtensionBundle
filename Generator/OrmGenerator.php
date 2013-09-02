@@ -12,7 +12,7 @@
 namespace IMOControl\M3\ExtensionBundle\Generator;
 
 use Symfony\Component\Console\Output\OutputInterface;
-use Sonata\EasyExtendsBundle\Bundle\BundleMetadata;
+use IMOControl\M3\ExtensionBundle\Bundle\BundleMetadata;
 
 class OrmGenerator implements GeneratorInterface
 {
@@ -31,7 +31,7 @@ class OrmGenerator implements GeneratorInterface
      */
     public function generate(OutputInterface $output, BundleMetadata $bundleMetadata)
     {
-        $this->generateMappingEntityFiles($output, $bundleMetadata);
+        //$this->generateMappingEntityFiles($output, $bundleMetadata);
         $this->generateEntityFiles($output, $bundleMetadata);
         $this->generateEntityRepositoryFiles($output, $bundleMetadata);
     }
@@ -119,8 +119,8 @@ class OrmGenerator implements GeneratorInterface
         $names = $bundleMetadata->getOrmMetadata()->getEntityNames();
 
         foreach ($names as $name) {
-            $dest_file  = sprintf('%s/%sRepository.php', $bundleMetadata->getOrmMetadata()->getExtendedEntityDirectory(), $name);
-            $src_file   = sprintf('%s/Base%sRepository.php', $bundleMetadata->getOrmMetadata()->getEntityDirectory(), $name);
+            $dest_file  = sprintf('%s/Repository/%sRepository.php', $bundleMetadata->getOrmMetadata()->getExtendedEntityDirectory(), $name);
+            $src_file   = sprintf('%s/Repository/Base%sRepository.php', $bundleMetadata->getOrmMetadata()->getEntityDirectory(), $name);
 
             if (!is_file($src_file)) {
                 $output->writeln(sprintf('   ! <info>%sRepository</info>', $name));

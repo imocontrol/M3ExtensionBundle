@@ -18,7 +18,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Output\Output;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 
-use Sonata\EasyExtendsBundle\Bundle\BundleMetadata;
+use IMOControl\M3\ExtensionBundle\Bundle\BundleMetadata;
 
 /**
  * Generate Application entities from bundle entities
@@ -36,9 +36,7 @@ class GenerateCommand extends ContainerAwareCommand
         $this
             ->setName('imocontrol:extension:generate')
             ->setHelp(<<<EOT
-The <info>easy-extends:generate:entities</info> command generating a valid bundle structure from a Vendor Bundle.
-
-  <info>ie: ./app/console imocontrol:extension:generate IMOControlM3CustomerBundle</info>
+  <info>example: $ php app/console imocontrol:extension:generate IMOControlM3CustomerBundle</info>
 EOT
         );
 
@@ -101,7 +99,6 @@ EOT
                 $output->writeln(sprintf('Ignoring bundle : "<comment>%s</comment>"', $bundleMetadata->getClass()));
                 continue;
             }
-
             // generate the bundle file
             if (!$bundleMetadata->isValid()) {
                 $output->writeln(sprintf('%s : <comment>wrong folder structure</comment>', $bundleMetadata->getClass()));
@@ -117,15 +114,15 @@ EOT
             $this->getContainer()->get('imocontrol.extension.generator.orm')
                 ->generate($output, $bundleMetadata);
 
-            $output->writeln(sprintf('Processing Doctrine ODM : "<info>%s</info>"', $bundleMetadata->getName()));
+            /*$output->writeln(sprintf('Processing Doctrine ODM : "<info>%s</info>"', $bundleMetadata->getName()));
             $this->getContainer()->get('imocontrol.extension.generator.odm')
                 ->generate($output, $bundleMetadata);
 
             $output->writeln(sprintf('Processing Doctrine PHPCR : "<info>%s</info>"', $bundleMetadata->getName()));
             $this->getContainer()->get('imocontrol.extension.generator.phpcr')
                 ->generate($output, $bundleMetadata);
-
-            $output->writeln('');
+			// */
+            $output->writeln('processed... done!');
         }
 
         if ($processed) {

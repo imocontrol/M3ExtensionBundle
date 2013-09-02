@@ -13,6 +13,7 @@
 namespace IMOControl\M3\ExtensionBundle\Bundle;
 
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
+
 /**
  * @author Michael Ofner <michael@imocontrol.net>
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
@@ -30,6 +31,8 @@ class BundleMetadata
     protected $namespace;
 
     protected $name;
+    
+    protected $full_name;
 
     protected $extendedDirectory = false;
 
@@ -76,22 +79,21 @@ class BundleMetadata
     protected function buildInformation()
     {
         $information = explode('\\', $this->getClass());
-
         if (!$this->isExtendable()) {
             $this->valid = false;
 
             return;
         }
-
+		
         if (count($information) < 3 AND count($information) > 4) {
-        	die("unvalid namespace count!");
+        	//die("unvalid namespace count!");
             $this->valid = false;
             return;
         }
         
-        
+        $this->full_name = $information[count($information) - 1];
+		$this->name = $information[count($information) - 2];
 
-        $this->name = $information[count($information) - 1];
         $this->vendor = $information[0];
         $this->subVendor = $information[1];
         $this->namespace =  sprintf('%s\%s\%s', $this->vendor, $this->subVendor, $this->name);
@@ -178,6 +180,11 @@ class BundleMetadata
     public function getName()
     {
         return $this->name;
+    }
+    
+    public function getFullname()
+    {
+    	return $this->full_name;
     }
 
     /**
